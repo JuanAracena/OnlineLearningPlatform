@@ -1,7 +1,7 @@
 ﻿# OnlineLearningPlatform
 
 ## Description
-This project is a web-based learning platform that allows users to create study tools like interactive flashcards, exams, and study games. The goal of the project is to provide users with a more accessible way of making learning tool to aide their education. A user has to create an account using an email to save their content in a database.
+This project is a web-based learning platform that allows users to create study tools like interactive flashcards, exams, and study games. The goal of the project is to provide users with a more accessible way of making learning tools to aide their education. A user has to create an account using an email to save their content in a database.
 
 ## Technology Used
 ### Backend
@@ -18,6 +18,7 @@ This project is a web-based learning platform that allows users to create study 
 
 ### Tools and Software
   - **Version Control**: Git
+  - **API Development Tool**: Postman
 
 ## Features
 **Flashcard Gallery**: The platform provides users with a list of flashcards they have created in the past using their account.
