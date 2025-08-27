@@ -1,0 +1,69 @@
+
+
+#close_btn {
+    width: 30px;
+    height: 30px;
+    align-self: end;
+    position: absolute;
+    margin-top: 10px;
+    margin-right: 10px;
+    border: none;
+    border-radius: 15px;
+    font-size: 20px;
+}
+
+#close_btn.active {
+    background-color: #e9e9e9;
+}
+
+#close_btn.active:hover {
+    background-color: rgba(0,0,0,0.1);;
+}
+
+#login_section_2h2 {
+    height: 40px;
+    width: 75px;
+    font-size: 25px;
+    color:black;
+    justify-self: center;
+    align-self: end;
+
+}
+
+#signup_section_2h2 {
+    height: 40px;
+    width: 110px;
+    font-size: 25px;
+    color:#22cc9d;
+    align-self: end;    
+}
+
+#submit_btn2, #login_page_btn {
+    color: whitesmoke;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+#submit_btn2 {
+    grid-column-start: 1;
+    grid-column-end: -1;
+    grid-row: 3;
+    justify-self: center;
+    align-self: center;
+    height: 35px;
+    width: 80px;
+}
+
+#login_page_btn {
+    width: 200px;
+    height: 35px;
+    margin-top: 10px;
+}
+
+#submit_btn2.active, #login_page_btn.active {
+    background-color: #22cc9d;
+}
+
+#submit_btn2.active:hover, #login_page_btn.active:hover {
+    background-color: rgba(30, 175, 134, 0.8);
+}

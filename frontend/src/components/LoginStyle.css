@@ -1,0 +1,124 @@
+#bg {
+    position: relative;
+}
+
+#login_navbar {
+    display: grid;
+    grid-template-columns: 110px 1fr;
+    grid-template-rows: 50px;
+    padding-top: 50px;
+    padding-left: 20px;
+    padding-right: 40px;
+    height: fit-content; 
+
+}
+
+#horizontal_line {
+    height: 2px;
+    background-color: black;
+    width: auto;
+    margin-bottom: 25px;
+    margin-right: 40px;
+    margin-left: 40px;
+
+}
+
+#form_section {
+    padding-left: 40px;
+    padding-right: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#login_section_h2 {
+    height: 40px;
+    width: 75px;
+    font-size: 25px;
+    color:#22cc9d;
+    justify-self: center;
+    align-self: end;
+
+}
+
+#signup_section_h2 {
+    height: 40px;
+    width: 110px;
+    font-size: 25px;
+    color:black;
+    align-self: end;    
+}
+
+
+
+
+#login_form {
+    display: grid;
+    grid-template-rows: 30px 30px 50px;
+    grid-template-columns: 95px 1fr;
+    height: fit-content;
+    row-gap: 20px;
+}
+
+#email_label, #password_label {
+    height: fit-content;
+    width: fit-content;
+    align-self: center;
+}
+
+#email, #password {
+    height: 25px;
+    align-self: center;
+}
+
+#email_label {
+    grid-row: 1;
+    grid-column: 1;
+}
+
+#email {
+    grid-row: 1;
+    grid-column: 2;
+}
+
+#password_label {
+    grid-row: 2;
+    grid-column: 1;
+}
+
+#password {
+    height: 25px;
+    align-self: center;
+    grid-row: 2;
+    grid-column: 2;
+}
+
+#submit_btn, #signup_page_btn {
+    color: whitesmoke;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+#submit_btn {
+    grid-column-start: 1;
+    grid-column-end: -1;
+    grid-row: 3;
+    justify-self: center;
+    align-self: center;
+    height: 35px;
+    width: 60px;
+}
+
+#signup_page_btn {
+    width: 260px;
+    height: 35px;
+    margin-top: 10px;
+}
+
+#submit_btn.active, #signup_page_btn.active {
+    background-color: #22cc9d;
+}
+
+#submit_btn.active:hover, #signup_page_btn.active:hover {
+    background-color: rgba(30, 175, 134, 0.8);
+}

@@ -1,0 +1,241 @@
+#bg {
+    display: flex;
+    flex-direction: column;
+    background-color: whitesmoke;
+    
+}
+
+#navbar {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 30px;
+    padding-top: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 15px;
+    height: fit-content;
+    background-color: #22cc9d;
+    
+}
+
+#login_btn {
+    height: 30px;
+    width: 60px;
+    justify-self: end;
+}
+
+#body {
+    display: grid;
+    grid-template-columns: 1fr;
+    position: relative;
+
+}
+
+#video {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block; 
+    
+}
+
+#color_overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(34, 204, 157, 0.3);
+    pointer-events: none;
+}
+
+#body_text {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    margin-left: 20px;
+    margin-right: 20px;
+    align-items: center;
+    justify-items: center;
+
+
+}
+
+#main_text {
+    height: fit-content;
+    width: fit-content;
+
+}
+
+#main_paragraph {
+    margin-left: 15px;
+    margin-right: 15px;
+    height: fit-content;
+    width: fit-content;
+}
+
+#signup_btn {
+    height: 40px;
+    width: 90px;
+    font-size: 15px;
+}
+
+#footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: fit-content;
+    background-color: #22cc9d;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    gap: 5px;
+}
+
+#logo, #main_text, #main_paragraph, #created_by {
+    color: whitesmoke;
+}
+
+#login_btn.active, #signup_btn.active {
+  color: black;
+  background-color: #e9e9e9;
+  border-radius: 10px;
+}
+
+#login_btn.active:hover, #signup_btn.active:hover {
+  color: #22cc9d;
+  border-color: #22cc9d;
+
+}
+
+#login_btn:active, #signup_btn:active {
+  background-color: #d9d9d9;
+
+}
+
+h1 {
+    font-size: 30px;
+}
+
+h3 {
+    font-size: 15px;
+}
+
+a:link {
+    color: whitesmoke;
+}
+
+a:visited {
+    color: whitesmoke;
+}
+
+a:hover {
+    color: rgb(141, 129, 140);
+}
+
+a:active {
+    color: whitesmoke;
+}
+
+/* #login_btn.active, #signup_btn.active {
+    background-color: #22cc9d;
+}
+
+#login_btn.active:hover, #signup_btn.active:hover {
+    background-color: rgba(30, 175, 134, 0.8);
+} */
+
+
+/* #background {
+    background: floralwhite;
+    padding-top: 20px;
+    padding-left: 20px;
+    display: grid;
+    grid-template-rows: 80px 150px;
+    padding-right: 20px;
+}
+
+#title_div {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    width: 100%;
+    margin-right: 20px;
+}
+
+#buttons {
+    display: grid;
+    grid-template-columns: 200px auto;
+    width: 100%;
+    justify-content: end;
+}
+
+#login_button {
+    width: 150px;
+    height: 50px;
+}
+
+.hidden{
+    display: none;
+}
+
+#login_div {
+    height: 200px;
+    width: 200px;
+    color: white;
+    background-color: teal;
+    padding: 10px;
+    display: grid;
+    grid-template-rows: 55px 50px 70px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    border-radius: 20px;
+
+}
+
+#first_row {
+    display: grid;
+    grid-template-columns: 75% 25%;
+
+}
+
+#login_title {
+    font-size: 20px;
+    margin-left: 60px;
+}
+
+#email_label {
+    font-size: 15px;
+}
+
+#email {
+    height: auto;
+    width: 149px;
+}
+
+#password_label {
+    font-size: 15px;
+}
+
+#password {
+    height: auto;
+    width: 122px;
+}
+
+#submit_button {
+    height: fit-content;
+    width: 65px;
+}
+
+#close_button {
+    height: 35px;
+    width: 35px;
+    margin-left: auto;
+}
+
+
+
+#descr_div {
+    display: grid;
+    grid-template-columns: 50% 50%;
+
+} */

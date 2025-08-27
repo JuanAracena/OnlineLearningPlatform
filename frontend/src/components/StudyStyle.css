@@ -1,0 +1,77 @@
+#bg {
+    background-color: #e9e9e9;
+}
+
+#study_section {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: 85% 15%;
+    margin: 30px;
+}
+
+#term_flashcard {
+    grid-row-start: 1;
+    grid-row-end: 1;
+    grid-column-start: 1;
+    grid-column-end: -1;
+    width: 75vw;
+    height: 55vh;
+    border-style: ridge;
+    border-radius: 10px;
+    
+}
+
+#prev_btn {
+    grid-row-start: 2;
+    grid-row-end: -1;
+    grid-column-start: 1;
+    grid-column-end: 2;
+}
+
+#next_btn {
+    grid-row-start: 2;
+    grid-row-end: -1;
+    grid-column-start: 2;
+    grid-column-end: -1;
+}
+
+#prev_btn, #next_btn {
+    height: 7vh;
+    width: 25vw;
+    border-style: ridge;
+    border-radius: 10px;
+}
+
+#term_flashcard, #prev_btn, #next_btn {
+    align-self: center;
+    justify-self: center;
+
+}
+
+#term_flashcard.active {
+    background-color: whitesmoke;
+}
+
+#term_flashcard.active:hover {
+    color: #22cc9d;
+    border-color: #22cc9d;
+}
+
+#term_flashcard:active  {
+    background-color: #d9d9d9;
+}
+
+#prev_btn.active, #next_btn.active {
+    background-color: #22cc9d;
+    color: whitesmoke
+}
+
+#prev_btn.active:active, #next_btn.active:active {
+    color: black;
+}
+
+#prev_btn.active:hover, #next_btn.active:hover {
+    background-color: #25dfac;
+}
+
+

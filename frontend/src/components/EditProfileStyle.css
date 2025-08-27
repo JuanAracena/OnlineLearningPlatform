@@ -1,0 +1,136 @@
+#edit_profile_bg {
+    display: grid;
+    grid-template-rows: 60px 170px 50px 1fr;
+    grid-template-columns: 50% 50%;
+}
+
+#profile_section {
+    background-color: #22cc9d;
+    align-self: center;
+    grid-row-start: 1;
+    grid-row-end: 1;
+    grid-column-start: 1;
+    grid-column-end: -1;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: 1fr;
+    align-items: center;
+    justify-items: end;
+}
+
+#profile_title {
+    height: fit-content;
+    width: fit-content;
+    justify-self: center;
+    grid-column-start: 1;
+    grid-column-end: -1;
+    grid-row-start: 1;
+    grid-row-end: -1;
+    color: whitesmoke;
+
+}
+
+#profile_close_btn {
+    grid-column-start: 2;
+    grid-column-end: -1;
+    grid-row-start: 1;
+    grid-row-end: -1;
+
+}
+
+#edit_form_section {
+    grid-row-start: 2;
+    grid-row-end: -1;
+    grid-column-start: 1;
+    grid-column-end: -1;
+    justify-self: center;
+    height: fit-content;
+    margin-top: 70px;
+}
+
+#profile_form {
+    display: grid;
+    grid-template-rows: 25% 25%;
+    grid-template-columns: 120px 160px;
+    height: fit-content;
+    gap: 20px;
+}
+
+#profile_email_label, #profile_email {
+    grid-row-start: 1;
+    grid-row-end: 1;
+    height: fit-content;
+    align-self: center;
+    justify-self: center;
+}
+
+#profile_email_label {
+    grid-column-start: 1;
+    grid-column-end: 1;
+    width: fit-content;
+    
+
+}
+
+#profile_email {
+    grid-column-start: 2;
+    grid-column-end: -1;
+    width: 157px;
+}
+
+#profile_password_label, #profile_password {
+    grid-row-start: 2;
+    grid-row-end: 2;
+}
+
+#profile_password_label {
+    grid-column-start: 1;
+    grid-column-end: 1;
+}
+
+#profile_password {
+    grid-column-start: 2;
+    grid-column-end: -1;
+    height: fit-content;
+}
+
+#profile_confirm_edit_btn, #profile_delete_account_btn {
+    height: 30px;
+    justify-self: center;
+
+}
+
+#profile_confirm_edit_btn {
+    grid-column-start: 1;
+    grid-column-end: -1;
+    grid-row-start: 3;
+    grid-row-end: 3;
+    width: 80px;
+    
+}
+
+#profile_delete_account_btn {
+    grid-column-start: 1;
+    grid-column-end: -1;
+    grid-row-start: 4;
+    grid-row-end: -1;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    width: 150px;
+}
+
+
+#profile_confirm_edit_btn.active, #profile_delete_account_btn.active {
+    color: black;
+    border-style: ridge;
+    border-radius: 5px;
+    border-width: 1px;
+}
+
+#profile_confirm_edit_btn.active:hover, #profile_delete_account_btn.active:hover {
+    color: #22cc9d;
+    background-color: whitesmoke;
+}
