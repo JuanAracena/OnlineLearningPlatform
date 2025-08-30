@@ -191,3 +191,126 @@ progress::-moz-progress-bar {
   background-color: #d9d9d9;
 
 }
+
+@media screen and (min-width: 800px) {
+  
+  #sets-navbar {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+
+  #sets_title {
+    padding-left: 30px;
+  }
+  
+  #sets_list {
+    display: grid;
+    grid-template-columns: repeat(3, 29%);
+    grid-template-rows: auto;
+    margin-left: 20px;
+  }
+
+  #new_set_li {
+    justify-self: center;
+  }
+
+  #new_set_btn {
+    width: 24vw;
+  }
+
+  #li_section {
+    grid-template-columns: 55% 20% 20%;
+  }
+
+  #editable_input {
+    width: 80px;
+  }
+
+  #profile_name {
+    grid-column-start: 1;
+    grid-column-end: -1;
+    grid-row-start: 1;
+    grid-row-end: 1;
+    justify-self: center;
+  }
+
+  #edit_profile {
+    grid-row-start: 3;
+    grid-row-end: 5;
+  }
+
+  #logout_btn {
+    grid-row-start: 6;
+    grid-row-end: 8;
+  }
+
+  #edit_profile, #logout_btn {
+    height: 50px;
+    width: 150px;
+    font-size: 17px;
+  }
+  
+  #profile_name {
+    font-size: 35px;
+  }
+
+  #close_profile_icon {
+    font-size: 25px;
+  }
+
+  #answers_section {
+    display: grid;
+    grid-template-rows: 50% 50%;
+    grid-template-columns: 50% 50%;
+    align-items: center;
+    justify-items: center;
+    height: fit-content;
+  }
+
+  #answer_btn {
+    width: 80%;
+    height: 75px;
+  }
+
+  #term_title, #term_descr {
+    margin-top: 20px;
+  }
+
+  #match_next_btn {
+    height: 45px;
+    margin-top: 20px;
+    width: 100px;
+  }
+
+  #results_section {
+    grid-template-rows: 100px 90px 1fr;
+  }
+
+  #results_title {
+    font-size: 30px;
+  }
+
+  #results_counter {
+    font-size: 20px;
+  }
+
+  #correct_icon, #wrong_icon {
+    font-size: 30px;
+  }
+
+  #start_over_btn {
+    margin-left: 25%;
+  }
+
+  #results_home_btn {
+    margin-right: 25%;
+  }
+
+  #start_over_btn, #results_home_btn {
+    height: 60px;
+    width: 140px;
+    margin-top: 50px;
+    font-size: 20px;
+  }
+
+}

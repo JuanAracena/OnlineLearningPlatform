@@ -134,3 +134,9 @@
     color: #22cc9d;
     background-color: whitesmoke;
 }
+
+@media screen and (min-width: 800px) {
+    #profile_title {
+        font-size: 35px;
+    }
+}

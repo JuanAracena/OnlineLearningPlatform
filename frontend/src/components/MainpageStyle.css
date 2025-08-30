@@ -136,106 +136,35 @@ a:active {
     color: whitesmoke;
 }
 
-/* #login_btn.active, #signup_btn.active {
-    background-color: #22cc9d;
-}
+@media screen and (min-width: 800px) {
+    #navbar {
+        padding-left: 30px;
+        padding-right: 30px;
+        grid-template-rows: 40px;
+        padding-bottom: 20px;
+    }
 
-#login_btn.active:hover, #signup_btn.active:hover {
-    background-color: rgba(30, 175, 134, 0.8);
-} */
+    #logo {
+        align-content: center;
+    }
 
+    #login_btn {
+        height: 40px;
+        width: 80px;
+        font-size: 15px;
+    }
 
-/* #background {
-    background: floralwhite;
-    padding-top: 20px;
-    padding-left: 20px;
-    display: grid;
-    grid-template-rows: 80px 150px;
-    padding-right: 20px;
-}
+    #signup_btn {
+        width: 110px;
+        font-size: 15px;
+    }
 
-#title_div {
-    display: grid;
-    grid-template-columns: 50% 50%;
-    width: 100%;
-    margin-right: 20px;
-}
+    h1 {
+        font-size: 40px;
+    }
 
-#buttons {
-    display: grid;
-    grid-template-columns: 200px auto;
-    width: 100%;
-    justify-content: end;
-}
-
-#login_button {
-    width: 150px;
-    height: 50px;
-}
-
-.hidden{
-    display: none;
-}
-
-#login_div {
-    height: 200px;
-    width: 200px;
-    color: white;
-    background-color: teal;
-    padding: 10px;
-    display: grid;
-    grid-template-rows: 55px 50px 70px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    border-radius: 20px;
+    h3 {
+        font-size: 20px;
+    }
 
 }
-
-#first_row {
-    display: grid;
-    grid-template-columns: 75% 25%;
-
-}
-
-#login_title {
-    font-size: 20px;
-    margin-left: 60px;
-}
-
-#email_label {
-    font-size: 15px;
-}
-
-#email {
-    height: auto;
-    width: 149px;
-}
-
-#password_label {
-    font-size: 15px;
-}
-
-#password {
-    height: auto;
-    width: 122px;
-}
-
-#submit_button {
-    height: fit-content;
-    width: 65px;
-}
-
-#close_button {
-    height: 35px;
-    width: 35px;
-    margin-left: auto;
-}
-
-
-
-#descr_div {
-    display: grid;
-    grid-template-columns: 50% 50%;
-
-} */

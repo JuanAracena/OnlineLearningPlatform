@@ -80,7 +80,7 @@ function Flashcard() {
                 </section>
 
                 <section id="terms_section">
-                    <ul id="sets_list" type="none">
+                    <ul id="f_sets_list" type="none">
                         {data.info.map((item, index) => {
                         return <li id="terms_li" key={index}>
                                 <section id="terms_li_section">

@@ -74,4 +74,8 @@
     background-color: #25dfac;
 }
 
-
+@media screen and (min-width: 800px) {
+    #term_flashcard {
+        font-size: 35px;
+    }
+}
