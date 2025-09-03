@@ -77,3 +77,14 @@ This project is a web-based learning platform that allows users to create study 
         npm start
 
 ## Development Process
+
+  1.  Designed the relational schema and entity-relationship diagram of the database and implemented it in PostgreSQL.
+  
+  2.  Drafted user interface layouts for small and medium screens, focusing on user accessibility and intuitiveness.
+    
+  3.  Used React, JavaScript, and CSS to render, stylize, and enforce functionality in the user interface layouts that make up the front end of the website.
+
+  4.  Developed the back end of the website using Django to handle http requests from the frontend, featuring an authentication system to manage login and signup requests.
+
+  5.  Used Postman to test http requests sent and received from the front end to the back end, ensuring that the correct data is displayed using session-based authentication.
+
