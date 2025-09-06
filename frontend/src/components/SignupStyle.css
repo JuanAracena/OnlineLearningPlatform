@@ -38,6 +38,55 @@
     align-self: end;    
 }
 
+#signup_form {
+    display: grid;
+    grid-template-rows: 30px 30px 30px 50px;
+    grid-template-columns: 95px 1fr;
+    height: fit-content;
+    row-gap: 20px;
+}
+
+#username_label {
+    grid-row: 1;
+    grid-column: 1;
+}
+
+#username {
+    grid-row: 1;
+    grid-column: 2;
+}
+
+#email_label2 {
+    grid-row: 2;
+    grid-column: 1;
+}
+
+#email2 {
+    grid-row: 2;
+    grid-column: 2;
+}
+
+#password_label2 {
+    grid-row: 3;
+    grid-column: 1;
+}
+
+#password2 {
+    grid-row: 3;
+    grid-column: 2;
+}
+
+#username_label, #email_label2, #password_label2 {
+    height: fit-content;
+    width: fit-content;
+    align-self: center;
+}
+
+#username, #email, #password {
+    height: 25px;
+    align-self: center;
+}
+
 #submit_btn2, #login_page_btn {
     color: whitesmoke;
     border-radius: 10px;
@@ -47,7 +96,7 @@
 #submit_btn2 {
     grid-column-start: 1;
     grid-column-end: -1;
-    grid-row: 3;
+    grid-row: 4;
     justify-self: center;
     align-self: center;
     height: 35px;

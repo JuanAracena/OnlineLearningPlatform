@@ -47,6 +47,8 @@ function EditProfile() {
                 
                 <section id="edit_form_section">
                     <form id="profile_form" onSubmit={handleSubmit}>
+                        <label id="profile_username_label" for="profile_username">New username: </label>
+                        <input id="profile_username" type="text"></input>
                         <label id="profile_email_label" for="email">New email: </label>
                         <input id="profile_email" type="text"></input>
                         <label id="profile_password_label" for="password">New password: </label>

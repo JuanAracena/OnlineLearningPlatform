@@ -34,11 +34,13 @@ function Signup() {
                 <div id="horizontal_line"></div>
     
                 <section id="form_section">
-                    <form id="login_form" onSubmit={sendSignup}>
-                        <label id="email_label" for="email">Email: </label>
-                        <input id="email" type="text" placeholder="john@gmail.com" required></input>
-                        <label id="password_label" for="password">Password: </label>
-                        <input id="password" type="password" required></input>
+                    <form id="signup_form" onSubmit={sendSignup}>
+                        <label id="username_label" for="username">Username: </label>
+                        <input id="username" type="text" placeholder="John" required></input>
+                        <label id="email_label2" for="email">Email: </label>
+                        <input id="email2" type="text" placeholder="john@gmail.com" required></input>
+                        <label id="password_label2" for="password">Password: </label>
+                        <input id="password2" type="password" required></input>
                         <button id="submit_btn2" type="submit" class="active">Sign Up</button>
                     </form>
     

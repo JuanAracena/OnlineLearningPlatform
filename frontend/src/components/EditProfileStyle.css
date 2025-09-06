@@ -45,20 +45,32 @@
     grid-column-end: -1;
     justify-self: center;
     height: fit-content;
-    margin-top: 70px;
+    margin-top: 50px;
 }
 
 #profile_form {
     display: grid;
-    grid-template-rows: 25% 25%;
+    grid-template-rows: 16.6% 16.6% 16.6%;
     grid-template-columns: 120px 160px;
     height: fit-content;
     gap: 20px;
 }
 
+#profile_username_label {
+    grid-column-start: 1;
+    grid-column-end: 1;
+    width: fit-content;
+}
+
+#profile_username {
+    grid-column-start: 2;
+    grid-column-end: -1;
+    height: fit-content;
+}
+
 #profile_email_label, #profile_email {
-    grid-row-start: 1;
-    grid-row-end: 1;
+    grid-row-start: 2;
+    grid-row-end: 2;
     height: fit-content;
     align-self: center;
     justify-self: center;
@@ -75,12 +87,12 @@
 #profile_email {
     grid-column-start: 2;
     grid-column-end: -1;
-    width: 157px;
+    width: 156px;
 }
 
 #profile_password_label, #profile_password {
-    grid-row-start: 2;
-    grid-row-end: 2;
+    grid-row-start: 3;
+    grid-row-end: 3;
 }
 
 #profile_password_label {
