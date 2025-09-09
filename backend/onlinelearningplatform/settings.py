@@ -40,7 +40,9 @@ INSTALLED_APPS = [
     'rest_framework',
     'corsheaders',
     'accounts',
-    'user_profile'
+    'flashcards',
+    'django_extensions'
+    
 ]
 
 MIDDLEWARE = [

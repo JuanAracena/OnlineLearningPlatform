@@ -46,12 +46,12 @@
     row-gap: 20px;
 }
 
-#username_label {
+#username_label2 {
     grid-row: 1;
     grid-column: 1;
 }
 
-#username {
+#username2 {
     grid-row: 1;
     grid-column: 2;
 }
@@ -76,13 +76,13 @@
     grid-column: 2;
 }
 
-#username_label, #email_label2, #password_label2 {
+#username_label2, #email_label2, #password_label2 {
     height: fit-content;
     width: fit-content;
     align-self: center;
 }
 
-#username, #email, #password {
+#username2, #email, #password {
     height: 25px;
     align-self: center;
 }

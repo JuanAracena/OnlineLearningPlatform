@@ -35,8 +35,8 @@ function Signup() {
     
                 <section id="form_section">
                     <form id="signup_form" onSubmit={sendSignup}>
-                        <label id="username_label" for="username">Username: </label>
-                        <input id="username" type="text" placeholder="John" required></input>
+                        <label id="username_label2" for="username2">Username: </label>
+                        <input id="username2" type="text" placeholder="John" required></input>
                         <label id="email_label2" for="email">Email: </label>
                         <input id="email2" type="text" placeholder="john@gmail.com" required></input>
                         <label id="password_label2" for="password">Password: </label>

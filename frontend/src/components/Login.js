@@ -36,8 +36,8 @@ function Login() {
 
             <section id="form_section">
                 <form id="login_form" onSubmit={sendLogin}>
-                    <label id="email_label" for="email">Email: </label>
-                    <input id="email" type="text" placeholder="john@gmail.com" required></input>
+                    <label id="username_label" for="username">Username: </label>
+                    <input id="username" type="text" placeholder="John" required></input>
                     <label id="password_label" for="password">Password: </label>
                     <input id="password" type="password" required></input>
                     <button id="submit_btn" type="submit" class="active">Login</button>

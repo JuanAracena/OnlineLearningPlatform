@@ -1,12 +1,11 @@
 from rest_framework.views import APIView
 from rest_framework import permissions
 from django.contrib.auth.models import User
-from user_profile.models import UserProfile
 from rest_framework.response import Response
 from django.views.decorators.csrf import ensure_csrf_cookie, csrf_protect
 from django.utils.decorators import method_decorator
 from django.contrib import auth
-from .serializers import UserSerializer
+from .serializers import UserSerializer, ChangePasswordSerializer
 
 # Create your views here.
 
@@ -31,6 +30,7 @@ class SignupView(APIView):
         data = self.request.data
 
         username = data['username']
+        email = data['email']
         password = data['password']
         re_password = data['re_password']
 
@@ -42,11 +42,7 @@ class SignupView(APIView):
                         if len(password) < 6:
                             return Response({ 'error': 'Password must be at least 6 characters' }) 
                         else:
-                            user = User.objects.create_user(username=username, password=password)
-
-                            user = User.objects.get(id=user.id)
-
-                            user_profile = UserProfile.objects.create(user=user, first_name='', last_name='')
+                            User.objects.create_user(username=username, email=email, password=password)
 
                             return Response({ 'success': 'User created successfully' })
             else:
@@ -74,6 +70,7 @@ class LoginView(APIView):
                 return Response({ 'error': 'Error Authenticating' })
         except:
             return Response({ 'error': 'Something went wrong when logging in' })
+        
 class LogoutView(APIView):
     def post(self, request, format=None):
         try:
@@ -109,3 +106,27 @@ class GetUsersView(APIView):
         users = UserSerializer(users, many=True)
 
         return Response(users.data)
+    
+
+class UserProfileUpdateView(APIView):
+    permission_classes = [permissions.IsAuthenticated]
+
+    def put(self, request):
+        serializer = UserSerializer(request.user, data=request.data, partial=False)
+
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors)
+
+class ChangePasswordView(APIView):
+    permission_classes = [permissions.IsAuthenticated]
+
+    def put(self, request):
+        serializer = ChangePasswordSerializer(data=request.data, context={"request": request})
+
+        if serializer.is_valid():
+            serializer.save()
+            return Response({"detail": "Password updated successfully"})    
+        
+        return Response(serializer.errors)

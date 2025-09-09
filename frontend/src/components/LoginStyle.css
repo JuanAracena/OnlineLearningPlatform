@@ -60,23 +60,23 @@
     row-gap: 20px;
 }
 
-#email_label, #password_label {
+#username_label, #password_label {
     height: fit-content;
     width: fit-content;
     align-self: center;
 }
 
-#email, #password {
+#username, #password {
     height: 25px;
     align-self: center;
 }
 
-#email_label {
+#username_label {
     grid-row: 1;
     grid-column: 1;
 }
 
-#email {
+#username {
     grid-row: 1;
     grid-column: 2;
 }
