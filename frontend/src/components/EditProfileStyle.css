@@ -60,12 +60,14 @@
     grid-column-start: 1;
     grid-column-end: 1;
     width: fit-content;
+    justify-self: center;
 }
 
 #profile_username {
     grid-column-start: 2;
     grid-column-end: -1;
     height: fit-content;
+    justify-self: center;
 }
 
 #profile_email_label, #profile_email {

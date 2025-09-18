@@ -10,9 +10,11 @@ import { IoCheckmarkCircle } from "react-icons/io5";
 import { MdCancel } from "react-icons/md";
 import { FaPlus } from "react-icons/fa6";
 import jsonData from "./testData.json";
+import { connect } from "react-redux";
+import { logout } from "../actions/auth";
 
 
-function Sets() {
+function Sets({ isAuthenticated, logout }) {
 
     const navigate = useNavigate();
 
@@ -41,7 +43,9 @@ function Sets() {
     const handleLogout = (event) => {
         event.preventDefault();
 
-        console.log("Logging out...");
+        logout();
+        navigate("/");
+
     }
 
     const toggleProfile = (event) => {
@@ -155,4 +159,8 @@ function Sets() {
     )
 }
 
-export default Sets;
+const mapStateToProps = state => ({
+   isAuthenticated: state.auth.isAuthenticated
+});
+
+export default connect(mapStateToProps, { logout })(Sets);

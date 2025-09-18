@@ -11,21 +11,54 @@ import Match from "./components/Match";
 import { Provider } from "react-redux";
 import store from "./store";
 
+import Layout from "./hocs/Layout";
+import PrivateRoute from "./hocs/PrivateRoute";
+
 function App() {
   return (
     <Provider store={store}>
       <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Mainpage />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<Signup />} />
-          <Route path="/sets" element={<Sets />} />
-          <Route path="/edit_profile" element={<EditProfile />} />
-          <Route path="/flashcards" element={<Flashcard />} />
-          <Route path="/study" element={<Study />} />
-          <Route path="/match" element={<Match />} />
-          
-        </Routes>
+        <Layout>
+          <Routes>
+            <Route path="/" element={<Mainpage />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/signup" element={<Signup />} />
+            <Route path="/sets" element={
+                <PrivateRoute>
+                  <Sets />
+                </PrivateRoute>
+                
+                } />
+            <Route path="/edit_profile" element={
+              <PrivateRoute>
+                <EditProfile /> 
+              </PrivateRoute>
+
+              } />
+            <Route path="/flashcards" element={
+              <PrivateRoute>
+                <Flashcard />
+              </PrivateRoute>
+              
+              } />
+
+            <Route path="/study" element={
+              <PrivateRoute>
+                <Study />
+              </PrivateRoute>
+              
+              } />
+
+            <Route path="/match" element={
+              <PrivateRoute>
+                <Match />
+              </PrivateRoute>
+              
+              } />
+            
+          </Routes>
+        </Layout>
+        
       </BrowserRouter>
     </Provider>
       

@@ -1,8 +1,21 @@
 import "./LoginStyle.css";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { IoClose } from "react-icons/io5";
+import { connect } from "react-redux";
+import { login } from "../actions/auth";
+import CSRFToken from "../components/CSRFToken";
 
-function Login() {
+function Login({ login, isAuthenticated, error }) {
+
+    const [formData, setFormData] = useState({
+        username: '',
+        password: ''
+    });
+
+    const { username, password } = formData;
+
+    const onChange = e => setFormData({...formData, [e.target.name]: e.target.value });
 
     const navigate = useNavigate();
     
@@ -19,8 +32,18 @@ function Login() {
 
     const sendLogin = (event) => {
         event.preventDefault();
-        console.log("Logging in...");
+        login(username, password);
     }
+
+    if (isAuthenticated) {
+        navigate("/sets");
+    }
+
+    useEffect(() => {
+        if(error) {
+            alert(error);
+        }
+    }, [error])
 
 
 
@@ -36,10 +59,11 @@ function Login() {
 
             <section id="form_section">
                 <form id="login_form" onSubmit={sendLogin}>
+                    <CSRFToken />
                     <label id="username_label" for="username">Username: </label>
-                    <input id="username" type="text" placeholder="John" required></input>
+                    <input id="username" name="username" type="text" placeholder="John" onChange={e => onChange(e)} required></input>
                     <label id="password_label" for="password">Password: </label>
-                    <input id="password" type="password" required></input>
+                    <input id="password" name="password" type="password" onChange={e => onChange(e)} required></input>
                     <button id="submit_btn" type="submit" class="active">Login</button>
                 </form>
 
@@ -49,4 +73,9 @@ function Login() {
     )
 }
 
-export default Login;
+const mapStateToProps = state => ({
+    isAuthenticated: state.auth.isAuthenticated,
+    error: state.auth.error
+});
+
+export default connect(mapStateToProps, { login })(Login);

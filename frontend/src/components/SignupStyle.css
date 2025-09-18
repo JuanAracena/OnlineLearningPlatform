@@ -40,8 +40,8 @@
 
 #signup_form {
     display: grid;
-    grid-template-rows: 30px 30px 30px 50px;
-    grid-template-columns: 95px 1fr;
+    grid-template-rows: 30px 30px 30px 30px 50px;
+    grid-template-columns: 150px 1fr;
     height: fit-content;
     row-gap: 20px;
 }
@@ -64,6 +64,7 @@
 #email2 {
     grid-row: 2;
     grid-column: 2;
+    height: auto;
 }
 
 #password_label2 {
@@ -74,9 +75,16 @@
 #password2 {
     grid-row: 3;
     grid-column: 2;
+    height: auto;
 }
 
-#username_label2, #email_label2, #password_label2 {
+#confirm_password {
+    grid-row: 4;
+    grid-column: 2;
+    height: auto;
+}
+
+#username_label2, #email_label2, #password_label2, #confirm_password_label {
     height: fit-content;
     width: fit-content;
     align-self: center;
@@ -96,7 +104,7 @@
 #submit_btn2 {
     grid-column-start: 1;
     grid-column-end: -1;
-    grid-row: 4;
+    grid-row: 5;
     justify-self: center;
     align-self: center;
     height: 35px;

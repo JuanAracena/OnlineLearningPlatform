@@ -9,7 +9,6 @@ from .serializers import UserSerializer, ChangePasswordSerializer
 
 # Create your views here.
 
-@method_decorator(csrf_protect, name='dispatch')
 class CheckAuthenticatedView(APIView):
     def get(self, request, format=None):
         try:
@@ -65,9 +64,9 @@ class LoginView(APIView):
 
             if user is not None:
                 auth.login(request, user)
-                return Response({ 'success': 'User authenticated', 'username': username })
+                return Response({ 'success': 'User authenticated' })
             else:
-                return Response({ 'error': 'Error Authenticating' })
+                return Response({ 'error': 'Error Authenticating. Invalid username or password' })
         except:
             return Response({ 'error': 'Something went wrong when logging in' })
         
@@ -91,21 +90,29 @@ class DeleteAccountView(APIView):
         user = self.request.user
 
         try:
-            user = User.objects.filter(id=user.id).delete()
+            User.objects.filter(id=user.id).delete()
 
             return Response({ 'success': 'User deleted successfully' })
         except:
             return Response({ 'error': 'Something went wrong when trying to delete user' })
 
-class GetUsersView(APIView):
-    permission_classes = (permissions.AllowAny, )
+    
+class GetSingleUserView(APIView):
+    permission_classes = (permissions.IsAuthenticated, )
 
     def get(self, request, format=None):
-        users = User.objects.all()
+        try:
+            user = request.user
+            serializer = UserSerializer(user)
 
-        users = UserSerializer(users, many=True)
-
-        return Response(users.data)
+            return Response({
+                'profile': serializer.data,
+                'username': str(user.username)
+            })
+        except Exception as e:
+            return Response({
+                'error': 'Something went wrong when retrieving user'
+            })
     
 
 class UserProfileUpdateView(APIView):

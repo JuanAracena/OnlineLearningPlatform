@@ -1,9 +1,26 @@
 import "./SignupStyle.css";
 import { useNavigate } from "react-router-dom";
 import { IoClose } from "react-icons/io5";
+import { useState } from "react";
+import { connect } from "react-redux";
+import { register } from "../actions/auth";
+import CSRFToken from "../components/CSRFToken";
 
-function Signup() {
+function Signup({ register, isAuthenticated }) {
     const navigate = useNavigate();
+    
+    const [formData, setFormData] = useState({
+            username: '',
+            email: '',
+            password: '',
+            re_password: ''
+        });
+
+    const [accountCreated, setAccountCreated] = useState(false);
+
+    const { username, email, password, re_password } = formData;
+
+    const onChange = e => setFormData({...formData, [e.target.name]: e.target.value });
     
     const closeWindow = (event) => {
         event.preventDefault();
@@ -18,10 +35,20 @@ function Signup() {
 
     const sendSignup = (event) => {
         event.preventDefault();
-        console.log("Creating account...");
+
+        if(password === re_password) {
+            register(username, email, password, re_password);
+            setAccountCreated(true);
+
+        }
     }
-    
-    
+
+    if(isAuthenticated) {
+        navigate("/sets");
+
+    } else if(accountCreated) {
+        navigate("/login");
+    }
     
         return (
             <div id="bg">
@@ -35,12 +62,15 @@ function Signup() {
     
                 <section id="form_section">
                     <form id="signup_form" onSubmit={sendSignup}>
+                        <CSRFToken />
                         <label id="username_label2" for="username2">Username: </label>
-                        <input id="username2" type="text" placeholder="John" required></input>
+                        <input id="username2" name="username" type="text" placeholder="John" onChange={e => onChange(e)} required></input>
                         <label id="email_label2" for="email">Email: </label>
-                        <input id="email2" type="text" placeholder="john@gmail.com" required></input>
+                        <input id="email2" name="email" type="text" placeholder="john@gmail.com" onChange={e => onChange(e)} required></input>
                         <label id="password_label2" for="password">Password: </label>
-                        <input id="password2" type="password" required></input>
+                        <input id="password2" name="password" type="password" onChange={e => onChange(e)} minLength="6" required></input>
+                        <label id="confirm_password_label" for="confirm_password">Verify password: </label>
+                        <input id="confirm_password" name="re_password" type="password" onChange={e => onChange(e)} minLength="6" required></input>
                         <button id="submit_btn2" type="submit" class="active">Sign Up</button>
                     </form>
     
@@ -51,4 +81,8 @@ function Signup() {
 
 }
 
-export default Signup;
+const mapStateToProps = state => ({
+    isAuthenticated: state.auth.isAuthenticated
+});
+
+export default connect(mapStateToProps, { register })(Signup);
