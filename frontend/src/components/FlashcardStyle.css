@@ -1,7 +1,16 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden; 
+    max-width: 100%;
+}
+
 #terms_bg_grid {
     display: grid;
     grid-template-columns: 50% 50%;
     grid-template-rows: 65px 109px 1fr;
+    max-width: 100vw; 
+    overflow-x: hidden;
 }
 
 #home_btn {
@@ -15,7 +24,6 @@
 #home_btn.active {
     background-color: #22cc9d;
     color: whitesmoke;
-    
 }
 
 #home_btn.active:hover {
@@ -69,8 +77,6 @@
 
 #study_btn.active, #match_btn.active {
     background-color: #e9e9e9;
-
-
 }
 
 #study_btn.active:hover, #match_btn.active:hover {
@@ -84,11 +90,11 @@
 #f_sets_list {
     display: flex;
     flex-direction: column;
-    height: fit-content;
     width: 100%;
     gap: 30px;
-    padding-bottom: 40px;
-  }
+    padding: 0 20px 40px 20px;
+    box-sizing: border-box;
+}
 
 #terms_section {
     background-color: #e9e9e9;
@@ -103,14 +109,28 @@
     margin-top: 30px;
 }
 
+#terms_li {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
 #terms_li_section {
     display: grid;
-    grid-template-rows: 50% 50%;
-    grid-template-columns: 70% 15% 15%;
-    margin-left: 20px;
-    margin-right: 20px;
+    grid-template-rows: auto auto;
+    grid-template-columns: 1fr auto auto;
+    margin: 0;
+    padding: 10px;
     border-style: ridge;
     border-radius: 10px;
+    align-items: start;
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+#term_text, #def_text {
+    word-wrap: break-word;
+    white-space: normal;
 }
 
 #term_text, #editable_term {
@@ -118,11 +138,11 @@
     grid-row-end: 1;
     grid-column-start: 1;
     grid-column-end: 1;
-    margin-left: 15px;
+    /* margin-left: 15px; */
     margin-top: 5px;
 }
 
-#def_text, #editable_def {
+#def_text {
     grid-row-start: 2;
     grid-row-end: 2;
     grid-column-start: 1;
@@ -137,7 +157,11 @@
     grid-column-start: 2;
     grid-column-end: 2;
     justify-self: center;
-    align-self: center;
+}
+
+#edit_btn, #delete_btn {
+    align-self: start;
+    margin-top: 10px;
 }
 
 #delete_btn {
@@ -146,7 +170,6 @@
     grid-column-start: 3;
     grid-column-end: -1;
     justify-self: center;
-    align-self: center;
 }
 
 #confirm_edit_btn, #cancel_edit_btn {
@@ -154,20 +177,32 @@
     grid-row-end: -1;
 }
 
+#editable_def {
+    grid-area: 2 / 1 / 2 / 2;
+    /* margin-left: 15px; */
+    margin-bottom: 5px;
+    resize: none;
+}
+
 #editable_term, #editable_def {
+    width: 95%;
+    max-width: 95%;
     height: auto;
-    width: auto;
+    min-height: 25px;
+    box-sizing: border-box;
 }
 
 #new_term_btn {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 89vw;
+    width: 100%;
+    max-width: 100%;
     height: 50px;
     gap: 5px;
     border-radius: 10px;
-    margin-left: 20px;
+    margin: 0 auto;
+    box-sizing: border-box;
 }
 
 #new_term_btn.active {
@@ -181,8 +216,49 @@
     background-color: #e8e8e8;
 }
 
-@media screen and (min-width: 800px) {
+#term_creation_form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    justify-items: center;
+}
 
+#term_question {
+    grid-row-start: 1;
+    grid-row-end: 1;
+    grid-column-start: 1;
+    grid-column-end: -1;
+    height: 25px;
+    align-self: center;
+    justify-self: start;
+    width: 80%;
+    margin-left: 25px;
+    box-sizing: border-box;
+}
+
+#term_answer {
+        grid-area: 2 / 1 / 2 / -1;
+        margin-left: 25px;
+        resize: none;
+        width: 80%;
+        max-width: 80%;
+        min-height: 80px;
+        box-sizing: border-box;
+        justify-self: start;
+}
+
+@media screen and (max-width: 525px) {
+
+    #flashcard_close_btn {
+        margin-right: 10px;
+    }
+
+    #flashcard_creation_section {
+        width: 375px;
+    }
+}
+
+@media screen and (min-width: 800px) {
     #terms_bg_grid {
         grid-template-rows: 65px 150px 1fr;
     }
@@ -208,7 +284,6 @@
         grid-template-rows: 55px 60px;
         width: 92%;
         height: fit-content;
-
     }
 
     #flashcard_title {
@@ -228,16 +303,16 @@
 
     #f_sets_list {
         display: grid;
-        grid-template-rows: auto;
-        grid-template-columns: repeat(3, 31%);
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        grid-gap: 20px;
     }
 
     #terms_li {
-        width: 28.5vw;
+        width: 100%;
     }
 
     #terms_li_section {
-        grid-template-columns: 54% 15% 15%;
+        grid-template-columns: 1fr auto auto;
         column-gap: 10px;
     }
 
@@ -246,8 +321,14 @@
     }
 
     #new_term_btn {
-        width: 25vw;
-        margin-left: 0px;
+        width: 100%;
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+
+    #editable_term, #editable_def {
+        width: 100%;
+        max-width: 100%;
     }
 
 }

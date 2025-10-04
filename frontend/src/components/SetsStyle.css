@@ -25,7 +25,6 @@
     padding-bottom: 15px;
     height: fit-content;
     background-color: #22cc9d;
-
 }
 
 #logo {
@@ -48,7 +47,6 @@
 
 #profile_btn.active:hover {
     background-color: #25dfac;
-
 }
 
 #sets_title {
@@ -59,40 +57,45 @@
     padding-bottom: 30px;
 }
 
-#sets_id {
-    height: fit-content;
-    display: grid;
-    align-items: center;
-    justify-items: center;
-}
-
 #sets_list {
     display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
     height: fit-content;
     width: 100%;
     gap: 30px;
     padding-bottom: 40px;
 }
 
+#sets_id {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
 #li_section {
-    display: grid;
-    grid-template-columns: 65% 15% 15%;
-    grid-template-rows: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     border-style: ridge;
     border-radius: 10px;
     background-color: #f5f5f5;
     width: 80%;
-    height: fit-content;
+    min-height: 50px;
+    padding: 0 10px;
+    gap: 10px;
 }
 
 #editable_text {
-    height: 100%;
-    width: 100%;
-    align-self: center;
-    justify-self: center;
+    flex: 1;
+    text-align: left;
     background: none;
     border: none;
+    font-size: 16px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 #editable_text.active {
@@ -103,11 +106,10 @@
     color:#22cc9d;
 }
 
-#edit_btn, #delete_btn {
+#edit_btn, #delete_btn, #confirm_edit_btn, #cancel_edit_btn {
+    flex: 0 0 auto;
     height: 30px;
     width: 30px;
-    align-self: center;
-    justify-self: end;
 }
 
 #new_set_li {
@@ -118,15 +120,14 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 80vw;
+    width: 83.7vw;
     height: 50px;
     gap: 5px;
     border-radius: 10px;
 }
 
 #editable_input {
-    height: auto;
-    width: auto;
+    flex: 1;
     margin-left: 10px;
     margin-top: 10px;
     margin-bottom: 10px;
@@ -154,15 +155,14 @@ p {
     color: black;
 }
 
-#confirm_edit_btn.active, #cancel_edit_btn.active, #edit_btn.active, #delete_btn.active, #new_set_btn.active {
+#confirm_edit_btn.active, #cancel_edit_btn.active, #edit_btn.active, #delete_btn.active, #new_set_btn.active, #flashcard_submit_btn.active {
     color: black;
     border-style: ridge;
     border-radius: 5px;
     border-width: 1px;
-    
 }
 
-#confirm_edit_btn.active:hover, #cancel_edit_btn.active:hover, #edit_btn.active:hover, #delete_btn.active:hover, #new_set_btn.active:hover {
+#confirm_edit_btn.active:hover, #cancel_edit_btn.active:hover, #edit_btn.active:hover, #delete_btn.active:hover, #new_set_btn.active:hover, #flashcard_submit_btn.active:hover {
     color: #22cc9d;
     background-color: #e8e8e8;
 }
@@ -272,4 +272,98 @@ p {
     grid-column-end: 1;
     width: 100%;
     background-color: rgba(0,0,0,0.6);
+}
+
+#flashcard_creation_div {
+    position: absolute;
+    width: 100%;
+    background-color: rgba(0,0,0,0.2);
+}
+
+#flashcard_creation_section {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    height: 200px;
+    width: 500px;
+    transform: translate(-50%, -50%);
+    border-style: ridge;
+    background-color: #f5f5f5;
+    border-radius: 10px;
+    border-width: 4px;
+}
+
+#flashcard_creation_form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    justify-items: center;
+}
+
+#flashcard_title_label, #flashcard_close_btn {
+    grid-row-start: 1;
+    grid-row-end: 1;
+    height: fit-content;
+    align-self: center;
+}
+
+#flashcard_title_label {
+    grid-column-start: 1;
+    grid-column-end: -1;
+}
+
+#flashcard_close_btn {
+    grid-column-start: 2;
+    grid-column-end: -1;
+    width: 30px;
+    height: 30px;
+    margin-right: 20px;
+    justify-self: end;
+    align-self: center;
+    border: none;
+    border-radius: 15px;
+}
+
+#flashcard_close_btn.active {
+    background-color: whitesmoke;
+}
+
+#flashcard_close_btn.active:hover {
+    background-color: rgba(0,0,0,0.1);
+}
+
+#flashcard_title2 {
+    grid-row-start: 2;
+    grid-row-end: 2;
+    grid-column-start: 1;
+    grid-column-end: -1;
+    height: 25px;
+    align-self: center;
+    width: 90%;
+}
+
+#flashcard_submit_btn {
+    grid-row-start: 3;
+    grid-row-end: 3;
+    grid-column-start: 1;
+    grid-column-end: -1;
+    width: fit-content;
+    height: fit-content;
+    align-self: center;
+    width: 80px;
+    height: 30px;
+}
+
+#flashcard_close_profile_icon {
+    font-size: 25px;
+    color: black;
+}
+
+@media screen and (min-width: 800px) {
+    
+    #new_set_btn {
+        width: 25vw;
+        height: 7.4vh;
+    }
+
 }

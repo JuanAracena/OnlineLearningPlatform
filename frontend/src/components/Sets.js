@@ -9,33 +9,37 @@ import { MdDelete } from "react-icons/md";
 import { IoCheckmarkCircle } from "react-icons/io5";
 import { MdCancel } from "react-icons/md";
 import { FaPlus } from "react-icons/fa6";
-import jsonData from "./testData.json";
 import { connect } from "react-redux";
 import { logout } from "../actions/auth";
+import { create_flashcard, delete_flashcard, load_flashcards, update_flashcard } from "../actions/flashcards";
 
 
-function Sets({ isAuthenticated, logout }) {
+function Sets({ isAuthenticated, logout, flashcards, username, load_flashcards, create_flashcard, delete_flashcard, update_flashcard }) {
 
     const navigate = useNavigate();
 
     const [isProfileOpen, setProfileOpen] = useState(false);
 
+    const [isCreationWindowOpen, setCreationWindowOpen] = useState(false);
+
     const [editingId, setEditingId] = useState(null);
-    const [data, setData] = useState(jsonData);
+
+    const [formData, setFormData] = useState({
+        f_title: ''
+    });
+
+    const { f_title } = formData;
+
+    const onChange = e => setFormData({...formData, [e.target.name]: e.target.value });
 
     useEffect(() => {
-        if(!data) {
-            setData(jsonData);
+        if (isAuthenticated) {
+            load_flashcards();
         }
-        console.log("JSON data: ", data);
-        console.log("Editing ID: ", editingId);
-    }, [])
+    }, [isAuthenticated, load_flashcards])
     
     const redirectToEdit = (event) => {
         event.preventDefault();
-
-        console.log("Redirecting to edit profile page");
-
         navigate("/edit_profile");
 
     }
@@ -71,24 +75,43 @@ function Sets({ isAuthenticated, logout }) {
         console.log("New editing ID: ", editingId);
     };
 
-    const handleChange = (event) => {
+    const handleChange = (event, f_id) => {
         event.preventDefault();
-        console.log("Editing set name...")
+
+        if(f_title.trim() !== "") {
+            update_flashcard(f_id, f_title);
+            setFormData({ f_title: "" });
+            setEditingId(null);
+
+        }
     };
 
-    const deleteSet = (event) => {
+    const deleteSet = (event, f_id) => {
         event.preventDefault();
-        console.log("Deleting set...");
+        delete_flashcard(f_id);
     };
+
+    const openCreationWindow = (event) => {
+        event.preventDefault();
+        setCreationWindowOpen(!isCreationWindowOpen);
+
+    }
 
     const createSet = (event) => {
         event.preventDefault();
-        console.log("Creating new set...");
+        
+        if(f_title.trim() !== "") {
+            
+            create_flashcard(f_title);
+            setFormData({ f_title: "" });
+            setCreationWindowOpen(!isCreationWindowOpen);
+
+        }
     }
 
-    const openSet = (event) => {
+    const openSet = (event, f_id, f_title) => {
         event.preventDefault();
-        console.log("Opening set...");
+        navigate(`/flashcards/${f_id}/${f_title}`);
     }
     
 
@@ -104,31 +127,37 @@ function Sets({ isAuthenticated, logout }) {
                     <h2 id="sets_title">Your library</h2>
                     
                     <ul id="sets_list" type="none">
-                        {data.sets.map((item, index) => {
+                        {flashcards && flashcards.map((item, index) => {
                             return <li id="sets_id" key={index}>
-                                    <section id="li_section">
-                                        {editingId === item["id"] ? (
+                                    <form id="li_section" onSubmit={(e) => handleChange(e, item["f_id"])}>
+                                        {editingId === item["f_id"] ? (
                                             <Fragment>
-                                                <input id="editable_input" type="text" defaultValue={item["set_name"]} onChange={handleChange} autoFocus></input>
-                                                <button id="confirm_edit_btn" class="active"><IoCheckmarkCircle id="confirm_edit_icon" /></button>
-                                                <button id="cancel_edit_btn" onClick={toggleEdit} class="active"><MdCancel id="cancel_edit_icon"/></button>
+                                                <input id="editable_input" name="f_title" type="text" defaultValue={item["f_title"]} onChange={e => onChange(e)} autoFocus></input>
+                                                <button id="confirm_edit_btn" type="submit" class="active"><IoCheckmarkCircle id="confirm_edit_icon" /></button>
+                                                <button id="cancel_edit_btn" onClick={(e) => {
+                                                    setFormData({ f_title: "" });
+                                                    toggleEdit(e);
+                                                }} class="active"><MdCancel id="cancel_edit_icon"/></button>
                                             </Fragment>
                                             
                                         ) : (
                                             <Fragment>
-                                                <button id="editable_text" class="active" onClick={openSet}>{item["set_name"]}</button>
-                                                <button id="edit_btn" onClick={(e) => toggleEdit(e, item["id"])} class="active"><FaEdit id="edit_set_icon" class="active"/></button>
-                                                <button id="delete_btn" onClick={deleteSet} class="active"><MdDelete id="delete_set_icon"/></button>
+                                                <button id="editable_text" class="active" onClick={(e) => openSet(e, item["f_id"], item["f_title"])}>{item["f_title"]}</button>
+                                                <button id="edit_btn" onClick={(e) => {
+                                                    setFormData({ f_title: item["f_title"]});
+                                                    toggleEdit(e, item["f_id"]);
+                                                    }} class="active"><FaEdit id="edit_set_icon" class="active"/></button>
+                                                <button id="delete_btn" onClick={(e) => deleteSet(e, item["f_id"])} class="active"><MdDelete id="delete_set_icon"/></button>
                                             </Fragment>
 
                                         )}
                                         
-                                    </section>
+                                    </form>
                                     
                                 </li>
                         })}
                         <li id="new_set_li">
-                            <button id="new_set_btn" onClick={createSet} class="active"><FaPlus id="new_set_icon" />Create a new set</button>
+                            <button id="new_set_btn" onClick={openCreationWindow} class="active"><FaPlus id="new_set_icon" />Create a new set</button>
                         </li>
                             
                         
@@ -138,7 +167,7 @@ function Sets({ isAuthenticated, logout }) {
                 {isProfileOpen === true && (
                     <Fragment>
                         <section id="profile_top">
-                            <h2 id="profile_name">{data["name"]}</h2>
+                            <h2 id="profile_name">{username}</h2>
                             <button id="profile_close_btn" class="active" onClick={toggleProfile}><IoClose id="close_profile_icon" /></button>
                         </section>        
 
@@ -152,6 +181,20 @@ function Sets({ isAuthenticated, logout }) {
                     
                 )}
 
+                {isCreationWindowOpen === true && (
+                    <div id="flashcard_creation_div">
+                        <section id="flashcard_creation_section">
+                            <form id="flashcard_creation_form" onSubmit={createSet}>
+                                <label id="flashcard_title_label" for="flashcard_title">Flashcard title: </label>
+                                <input id="flashcard_title2" name="f_title" type="type" placeholder="Title" onChange={e => onChange(e)} autoFocus required></input>
+                                <button id="flashcard_submit_btn" type="submit" class="active">Submit</button>
+                                <button id="flashcard_close_btn" onClick={openCreationWindow} class="active"><IoClose id="flashcard_close_profile_icon" /></button>
+                            </form>
+                        </section>
+                    </div>
+                    
+                )}
+
 
             </div>
 
@@ -160,7 +203,9 @@ function Sets({ isAuthenticated, logout }) {
 }
 
 const mapStateToProps = state => ({
-   isAuthenticated: state.auth.isAuthenticated
+   isAuthenticated: state.auth.isAuthenticated,
+   flashcards: state.flashcards.flashcards,
+   username: state.profile.username
 });
 
-export default connect(mapStateToProps, { logout })(Sets);
+export default connect(mapStateToProps, { logout, load_flashcards, create_flashcard, delete_flashcard, update_flashcard })(Sets);

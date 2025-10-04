@@ -14,6 +14,6 @@ class FlashcardSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Flashcard
-        fields = ['username', 'f_title', 'terms']
+        fields = ['f_id', 'username', 'f_title', 'terms']
 
 

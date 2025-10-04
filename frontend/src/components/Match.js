@@ -1,19 +1,21 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { IoMdHome } from "react-icons/io";
-import termsData from "./termsData.json";
 import "./MatchStyle.css";
 import { useEffect, useState } from "react";
 import { IoMdCheckmark } from "react-icons/io";
 import { IoCloseOutline } from "react-icons/io5";
 import { GrLinkNext } from "react-icons/gr";
+import { connect } from "react-redux";
+import { load_terms } from "../actions/terms";
 
 function Shuffle(array) {
     return [...array].sort(() => Math.random() - 0.5);
 }
 
-function Match() {
+function Match({ isAuthenticated, terms, load_terms }) {
 
-    const [data, setData] = useState(termsData);
+    const { f_id } = useParams();
+
     const navigate = useNavigate();
 
     const [questions, setQuestions] = useState([]);
@@ -24,29 +26,30 @@ function Match() {
     const [wrongCount, setWrongCount] = useState(0); 
 
     useEffect(() => {
-        if(!data) {
-            setData(termsData);
+        
+        if(isAuthenticated) {
+            load_terms(f_id);
+
+            const allDefs = terms.map((s) => s.answer);
+
+            const quizQuestions = terms.map((item) => {
+                let wrongDefs = Shuffle(allDefs.filter((def) => def !== item.answer)).slice(0, 3);
+                let options = Shuffle([item.answer, ...wrongDefs]);
+
+
+                return {
+                    term: item.question,
+                    correct: item.answer,
+                    options
+                };
+            });
+
+            setQuestions(quizQuestions);
+
+            console.log("Quiz questions: ", quizQuestions);
         }
-
-        const allDefs = data.info.map((s) => s.definition);
-
-        const quizQuestions = data.info.map((item) => {
-            let wrongDefs = Shuffle(allDefs.filter((def) => def !== item.definition)).slice(0, 3);
-            let options = Shuffle([item.definition, ...wrongDefs]);
-
-
-            return {
-                term: item.question,
-                correct: item.definition,
-                options
-            };
-        });
-
-        setQuestions(quizQuestions);
-
-        console.log("Quiz questions: ", quizQuestions);
-
-    }, [])
+            
+    }, [isAuthenticated, f_id]);
 
     
     
@@ -149,4 +152,9 @@ function Match() {
     )
 }
 
-export default Match;
+const mapStateToProps = state => ({
+    isAuthenticated: state.auth.isAuthenticated,
+    terms: state.terms.terms
+});
+
+export default connect(mapStateToProps, { load_terms })(Match);

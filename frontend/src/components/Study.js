@@ -1,42 +1,42 @@
 import { useEffect, useState } from "react";
 import "./StudyStyle.css";
-import termsData from "./termsData.json";
 import { GrLinkPrevious } from "react-icons/gr";
 import { GrLinkNext } from "react-icons/gr";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { IoMdHome } from "react-icons/io";
+import { connect } from "react-redux";
+import { load_terms } from "../actions/terms";
 
 
-function Study() {
+function Study({ isAuthenticated, load_terms, terms }) {
 
+    
     const navigate = useNavigate();
-    const [data, setData] = useState(termsData);
+    const { f_id } = useParams();
 
-    const terms = data.info.map(item => item.question);
-    const def = data.info.map(item => item.definition);
+    const term = terms.map(item => item.question);
+    const def = terms.map(item => item.answer);
 
     const [currIndex, setCurrIndex] = useState(0);
     const[showTerm, setShowTerm] = useState(true);
 
     useEffect(() => {
-        if(!data){
-            setData(termsData);
+        if(isAuthenticated) {
+            load_terms(f_id);
         }
-
-        console.log("JSON data: ", data);
-    }, [])
+    }, [isAuthenticated, f_id]);
 
     const handleNext = (event) => {
         event.preventDefault();
         
-        setCurrIndex((prev) => (prev + 1) % terms.length);
+        setCurrIndex((prev) => (prev + 1) % term.length);
         setShowTerm(true);
     }
 
     const handlePrev = (event) => {
         event.preventDefault();
 
-        setCurrIndex((prev) => (prev - 1 + terms.length) % terms.length);
+        setCurrIndex((prev) => (prev - 1 + term.length) % term.length);
         setShowTerm(true);
     };
 
@@ -61,15 +61,18 @@ function Study() {
 
                 <section id="study_section">
 
-                    <button id="term_flashcard" onClick={handleFlip} class="active">{showTerm ? terms[currIndex] : def[currIndex]}</button>
+                    <button id="term_flashcard" onClick={handleFlip} class="active">{showTerm ? term[currIndex] : def[currIndex]}</button>
                     <button id="prev_btn" onClick={handlePrev} class="active"><GrLinkPrevious id="previous_icon"/></button>
                     <button id="next_btn" onClick={handleNext} class="active"><GrLinkNext id="next_icon"/></button>
-
-                    
 
                 </section>
             </div>
     )
 }
 
-export default Study;
+const mapStateToProps = state => ({
+    isAuthenticated: state.auth.isAuthenticated,
+    terms: state.terms.terms
+});
+
+export default connect(mapStateToProps, { load_terms } )(Study);

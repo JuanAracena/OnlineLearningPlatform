@@ -15,7 +15,6 @@
   -moz-appearance: none;
   border-radius: 10px;
   height: fit-content;
-  
 }
 
 progress::-webkit-progress-bar {
@@ -40,7 +39,6 @@ progress::-moz-progress-bar {
   font-size: 15px;
   height: fit-content;
   margin-top: 10px;
-  
 }
 
 #correct_icon, #wrong_icon {
@@ -70,13 +68,24 @@ progress::-moz-progress-bar {
 
 #term_descr {
   align-self: center;
-  
+}
+
+/* === FIXED ANSWERS SECTION === */
+#answers_section {
+  display: grid;
+  grid-template-columns: 1fr; /* mobile: single column */
+  gap: 12px;
+  width: 100%;
+  max-width: 100vw;   /* never exceed viewport */
+  box-sizing: border-box;
+  overflow-x: hidden;
+  height: auto;       /* auto height, fits content */
 }
 
 #answer_btn {
-  display: block;
   width: 100%;
-  margin: 8px 0;
+  max-width: 100%;
+  margin: 0;
   padding: 12px;
   border: 2px solid #333;
   border-radius: 8px;
@@ -84,27 +93,15 @@ progress::-moz-progress-bar {
   cursor: pointer;
   font-size: 16px;
   transition: background 0.3s ease;
-  height: 50px;
-}
-
-#match_next_btn {
-  width: 80px;
-  align-self: end;
-  height: inherit;
-}
-
-#match_next_btn.active {
-  background-color: #22cc9d;
-  color: whitesmoke;
-  border-radius: 10px;
-}
-
-#match_next_btn.active:active {
-  color: black;
-}
-
-#match_next_btn.active:hover {
-  background-color: #25dfac;
+  min-height: 50px;
+  box-sizing: border-box;
+  white-space: normal;    /* allow wrapping */
+  word-wrap: break-word;  /* break long words if needed */
+  overflow-wrap: break-word;
+  text-align: center;     /* center text */
+  display: flex;          /* center text vertically too */
+  align-items: center;
+  justify-content: center;
 }
 
 #answer_btn:hover {
@@ -123,6 +120,27 @@ progress::-moz-progress-bar {
   border-color: #d32f2f;
 }
 
+#match_next_btn {
+  width: 100px;
+  align-self: end;
+  height: 45px;
+  margin-top: 20px;
+}
+
+#match_next_btn.active {
+  background-color: #22cc9d;
+  color: whitesmoke;
+  border-radius: 10px;
+}
+
+#match_next_btn.active:active {
+  color: black;
+}
+
+#match_next_btn.active:hover {
+  background-color: #25dfac;
+}
+
 #results_section {
   display: grid;
   grid-template-columns: 50% 50%;
@@ -139,7 +157,6 @@ progress::-moz-progress-bar {
   margin-left: 20px;
   height: fit-content;
   align-self: center;
-
 }
 
 #results_counter {
@@ -184,12 +201,10 @@ progress::-moz-progress-bar {
 #start_over_btn.active:hover, #results_home_btn.active:hover {
   color: #22cc9d;
   border-color: #22cc9d;
-
 }
 
 #start_over_btn:active, #results_home_btn:active {
   background-color: #d9d9d9;
-
 }
 
 @media screen and (min-width: 800px) {
@@ -216,10 +231,6 @@ progress::-moz-progress-bar {
 
   #new_set_btn {
     width: 24vw;
-  }
-
-  #li_section {
-    grid-template-columns: 55% 20% 20%;
   }
 
   #editable_input {
@@ -258,29 +269,28 @@ progress::-moz-progress-bar {
     font-size: 25px;
   }
 
+  /* === FIXED ANSWERS SECTION (desktop) === */
   #answers_section {
-    display: grid;
-    grid-template-rows: 50% 50%;
-    grid-template-columns: 50% 50%;
-    align-items: center;
+    grid-template-columns: 1fr 1fr; /* 2 columns on desktop */
+    gap: 16px;
     justify-items: center;
-    height: fit-content;
+    height: auto; /* fit content */
   }
 
   #answer_btn {
-    width: 80%;
-    height: 75px;
+    width: 100%;
+    min-height: 75px; /* taller on desktop */
   }
 
   #term_title, #term_descr {
     margin-top: 20px;
   }
 
-  #match_next_btn {
+  /* #match_next_btn {
     height: 45px;
     margin-top: 20px;
     width: 100px;
-  }
+  } */
 
   #results_section {
     grid-template-rows: 100px 90px 1fr;
@@ -312,5 +322,4 @@ progress::-moz-progress-bar {
     margin-top: 50px;
     font-size: 20px;
   }
-
 }

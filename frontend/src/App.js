@@ -35,21 +35,21 @@ function App() {
               </PrivateRoute>
 
               } />
-            <Route path="/flashcards" element={
+            <Route path="/flashcards/:f_id/:f_title" element={
               <PrivateRoute>
                 <Flashcard />
               </PrivateRoute>
               
               } />
 
-            <Route path="/study" element={
+            <Route path="/study/:f_id" element={
               <PrivateRoute>
                 <Study />
               </PrivateRoute>
               
               } />
 
-            <Route path="/match" element={
+            <Route path="/match/:f_id" element={
               <PrivateRoute>
                 <Match />
               </PrivateRoute>

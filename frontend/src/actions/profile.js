@@ -74,7 +74,6 @@ export const update_profile = (username, email, password) => async dispatch => {
 
         const data = await res.json();
 
-        //Might need to check this if there's a state error
         if(data.id && data.username && data.email) {
             dispatch({
                 type: UPDATE_USER_PROFILE_SUCCESS,
