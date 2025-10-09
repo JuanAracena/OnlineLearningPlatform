@@ -19,6 +19,8 @@ This project is a web-based learning platform that allows users to create study 
 ### Tools and Software
   - **Version Control**: Git
   - **API Development Tool**: Postman
+  - **State Management**: Redux
+  - **Hosting Platforms**: Vercel, Supabase
 
 ## Features
 **Flashcard Gallery**: The platform provides users with a list of flashcards they have created in the past using their account.
@@ -87,4 +89,9 @@ This project is a web-based learning platform that allows users to create study 
   4.  Developed the back end of the website using Django to handle http requests from the frontend, featuring an authentication system to manage login and signup requests.
 
   5.  Used Postman to test http requests sent and received from the front end to the back end, ensuring that the correct data is displayed using session-based authentication.
+  
+  6.  Connected backend endpoints with the frontend by using API fetch calls and managed their states usign react-redux.
+  
+  7.  Used Vercel and Supabase to host the website and database to enable public access without a local server.
+
 
