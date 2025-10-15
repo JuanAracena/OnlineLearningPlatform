@@ -1,7 +1,7 @@
 ﻿# OnlineLearningPlatform
 
 ## Description
-This project is a web-based learning platform that allows users to create study tools like interactive flashcards, exams, and study games. The goal of the project is to provide users with a more accessible way of making learning tools to aide their education. A user has to create an account using an email to save their content in a database.
+This project is a web-based learning platform that allows users to create study tools like interactive flashcards, exams, and study games. The goal of the project is to provide users with a more accessible way of making learning tools to aid their education. A user has to create an account using an email to save their content in a database.
 
 ## Technology Used
 ### Backend
@@ -90,5 +90,6 @@ This project is a web-based learning platform that allows users to create study 
   5.  Used Postman to test http requests sent and received from the front end to the back end, ensuring that the correct data is displayed using session-based authentication.
   
   6.  Connected backend endpoints with the frontend by using API fetch calls and managed their states usign react-redux.
+
 
 
